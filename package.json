@@ -1,9 +1,12 @@
 {
   "name": "q3000",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Get/set library",
   "main": "lib/q3000.js",
   "module": "src/index.js",
+  "files": [
+    "lib/q3000.js"
+  ],
   "scripts": {
     "prebuild": "npm run clean",
     "predev": "npm run clean",
@@ -12,7 +15,6 @@
     "dev": "cross-env NODE_ENV=development webpack --config config/webpack.dev.config.js",
     "dev:watch": "cross-env NODE_ENV=development webpack --watch --config config/webpack.dev.config.js",
     "lint": "eslint ./src",
-    "size": "size-limit",
     "test": "jest --coverage",
     "test:watch": "jest --watch"
   },
@@ -53,7 +55,7 @@
     "coverageDirectory": "./coverage",
     "coveragePathIgnorePatterns": [
       "/node_modules/",
-      "/dist/"
+      "/lib/"
     ]
   }
 }
