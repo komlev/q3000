@@ -1,5 +1,6 @@
 import { forEach } from 'lodash/fp'
-import { traverse } from '../src/traverse'
+import { getPath } from '../src/path'
+import { traverse, getTillSplit } from '../src/traverse'
 
 describe('traverse', () => {
   const data = {
@@ -19,6 +20,28 @@ describe('traverse', () => {
       }
     ]
   }
+
+  it('getTillSplit returns valid path', () => {
+    let path = getPath('a.b.c.d'),
+      val = { a: { b: { c: { d: 1 } } } }
+    expect(getTillSplit(path, val)).toEqual(['a', 'b', 'c', 'd'])
+
+    path = getPath('a.b.c.d')
+    val = { a: { b: { c: [{ d: 1 }, { d: 1 }] } } }
+    expect(getTillSplit(path, val)).toEqual(['a', 'b', 'c'])
+
+    path = getPath('a.b.c.d')
+    val = [{ a: 1 }, { a: 1 }, { a: 1 }]
+    expect(getTillSplit(path, val)).toEqual([])
+
+    path = getPath('a.b.c.0.d')
+    val = { a: { b: { c: [{ d: 1 }, { d: 1 }] } } }
+    expect(getTillSplit(path, val)).toEqual(['a', 'b', 'c', 0, 'd'])
+
+    path = getPath('a.b.c.0.d')
+    val = { a: { b: null } }
+    expect(getTillSplit(path, val)).toEqual(['a', 'b'])
+  })
 
   it('traverse is returning corrent value', () => {
     // HAPPY PATH
@@ -120,7 +143,7 @@ describe('traverse', () => {
       test = ([item, result, val]) => {
         const curPaths = [],
           run = (value, context) => {
-            curPaths.push(context.currentPath)
+            curPaths.push(context.current)
           }
         traverse(item, val || data, run)
         expect(curPaths).toEqual(result)

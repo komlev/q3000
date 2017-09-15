@@ -1,5 +1,5 @@
 import { get, set } from './access'
 import { getPath } from './path'
-import { traverse } from './traverse'
+import { traverse, traversePath } from './traverse'
 
-export { getPath, traverse, get, set }
+export { getPath, traverse, traversePath, get, set }

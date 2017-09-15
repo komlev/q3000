@@ -1,13 +1,17 @@
 /* eslint-disable import/no-extraneous-dependencies  */
-
 const config = require('./webpack.config'),
   webpack = require('webpack'),
-  BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+  BundleAnalyzer = require('webpack-bundle-analyzer').BundleAnalyzerPlugin,
+  LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
 
 config.devtool = 'source-map'
 config.plugins = config.plugins.concat([
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify('production')
+  }),
+  new LodashModuleReplacementPlugin({
+    currying: true,
+    flattening: true
   }),
   new webpack.LoaderOptionsPlugin({
     minimize: true,
@@ -34,7 +38,7 @@ config.plugins = config.plugins.concat([
       join_vars: true
     }
   }),
-  new BundleAnalyzerPlugin({
+  new BundleAnalyzer({
     analyzerMode: 'static',
     openAnalyzer: false
   })

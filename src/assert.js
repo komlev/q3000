@@ -5,7 +5,7 @@ import {
   isObject,
   isInteger,
   isSymbol
-} from 'lodash/fp'
+} from 'lodash'
 
 const WILDCARD = '*',
   indexPattern = /^\d+$/,

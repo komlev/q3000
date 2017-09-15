@@ -1,4 +1,4 @@
-import { map, all, compose, filter, flatten, any } from './fp'
+import { map, all, compose, filter, flatten, any } from 'lodash/fp'
 import {
   isFunction,
   isString,

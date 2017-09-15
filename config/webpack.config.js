@@ -1,6 +1,5 @@
 const { resolve } = require('path'),
   rootDirectory = resolve(__dirname, '../')
-  LodashModuleReplacementPlugin = require('lodash-webpack-plugin') // eslint-disable-line
 
 module.exports = {
   entry: './index.js',
@@ -21,7 +20,7 @@ module.exports = {
     ]
   },
   module: {
-    exprContextCritical: false,
+    exprContextCritical: true,
     loaders: [
       {
         test: /\.js?$/,
@@ -30,7 +29,5 @@ module.exports = {
       }
     ]
   },
-  plugins: [
-    // new LodashModuleReplacementPlugin() stopped working ???
-  ]
+  plugins: []
 }

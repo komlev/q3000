@@ -1,3 +1,4 @@
+import { map } from 'lodash/fp'
 import { isIndex, isExisty } from './assert'
 
 const concat = (a = [], b = []) => Array.prototype.concat(a, b),
@@ -7,6 +8,7 @@ const concat = (a = [], b = []) => Array.prototype.concat(a, b),
     return res
   },
   length = a => (isExisty(a) ? a.length : undefined),
-  parseIndex = value => (isIndex(value) ? parseInt(value, 10) : value)
+  parseIndex = value => (isIndex(value) ? parseInt(value, 10) : value),
+  indexMap = map.convert({ cap: false })
 
-export { length, concat, until, parseIndex }
+export { length, concat, until, parseIndex, indexMap }

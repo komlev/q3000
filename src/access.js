@@ -1,4 +1,4 @@
-import { set as fpSet } from './fp'
+import { set as fpSet } from 'lodash/fp'
 import { traverse } from './traverse'
 
 const get = (path, value, defaultValue) => {
@@ -9,11 +9,7 @@ const get = (path, value, defaultValue) => {
   set = (path, prop, value, create = true) => {
     let res = value
     const mapFunc = (val, context) => {
-      if (context.reached) {
-        res = fpSet(context.currentPath, prop, res)
-      } else if (create) {
-        res = fpSet(context.goalPath, prop, res)
-      }
+      if (context.reached || create) res = fpSet(context.goal, prop, res)
       return val
     }
 
