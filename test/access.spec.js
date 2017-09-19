@@ -34,6 +34,11 @@ describe('access', () => {
     ])
     expect(set('*', 1, [0, 0])).toEqual([1, 1])
     expect(set('a.b.c', 1, null)).toEqual({ a: { b: { c: 1 } } })
+    expect(set('a.0.b.1.c.2', 1, {})).toEqual({
+      a: [{ b: [undefined, { c: [undefined, undefined, 1] }] }]
+    })
+    expect(set('a.*', 1, { a: [{ b: 1 }, { b: 1 }] })).toEqual({ a: [1, 1] })
+    expect(set('a.*', 1, { a: [{ b: 1 }, { b: 1 }] })).toEqual({ a: [1, 1] })
 
     const obj = { a: 1 },
       obj2 = set('b.c', 1, obj)
