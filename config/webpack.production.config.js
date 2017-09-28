@@ -11,7 +11,8 @@ config.plugins = config.plugins.concat([
   }),
   new LodashModuleReplacementPlugin({
     currying: true,
-    flattening: true
+    flattening: true,
+    paths: true
   }),
   new webpack.LoaderOptionsPlugin({
     minimize: true,
