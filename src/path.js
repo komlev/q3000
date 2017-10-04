@@ -43,8 +43,9 @@ const flattenFilter = compose(filter(isExisty), flatten),
     if (isString(result)) {
       if (hasBrakets(result)) {
         result = result.replace('[', '.')
+        const index = result.indexOf(']')
         let closeSymbol = '.'
-        if (result.indexOf(']') === result.length - 1) {
+        if (index === result.length - 1 || result[index + 1] === '.') {
           closeSymbol = ''
         }
         result = result.replace(']', closeSymbol)

@@ -23,6 +23,8 @@ describe('path', () => {
     expect(getPath('name.some')).toEqual(['name', 'some'])
     expect(getPath('name[*]boo')).toEqual(['name', '*', 'boo'])
     expect(getPath('name[0]')).toEqual(['name', 0])
+    expect(getPath('name[0]name')).toEqual(['name', 0, 'name'])
+    expect(getPath('name[0].name')).toEqual(['name', 0, 'name'])
     expect(getPath(['name', ''])).toEqual(['name', ''])
     expect(getPath(['user', 0, undefined, 'name'])).toEqual(['user', 0, 'name'])
     expect(getPath(['user', 0, null, 'name'])).toEqual(['user', 0, 'name'])
