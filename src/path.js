@@ -16,7 +16,7 @@ const flattenFilter = compose(filter(isExisty), flatten),
   hasSeparators = a => a.indexOf('.') !== -1,
   hasBrakets = a => a.indexOf('[') !== -1 || a.indexOf(']') !== -1,
   isPathItemValid = (p) => {
-    let result = isString(p) && !hasSeparators(p)
+    let result = isString(p) && !hasSeparators(p) && !hasBrakets(p)
     if (isIndex(p)) result = result && isInteger(p)
     return result
   },

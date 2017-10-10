@@ -8,6 +8,7 @@ describe('path', () => {
   it('isPath returns correct value', () => {
     expect(isPath('assa.asas')).toEqual(false)
     expect(isPath(['assa.asas', 'dasd.ad'])).toEqual(false)
+    expect(isPath(['assa', '[0]', 'ad'])).toEqual(false)
     expect(isPath(['assa', 'ad'])).toEqual(true)
   })
 
