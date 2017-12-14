@@ -212,6 +212,15 @@ describe('traverse', () => {
             [{ team: 0, list: 0 }, { team: 0, list: 1 }],
             [{ team: 1, list: 0 }, { team: 1, list: 1 }]
           ]
+        ],
+        [
+          'list.list.list.a',
+          [
+            [[{ list: 0, list1: 0, list2: 0 }, { list: 0, list1: 0, list2: 1 }]]
+          ],
+          {
+            list: [{ list: [{ list: [{ a: 1 }, { a: 2 }] }] }]
+          }
         ]
       ],
       test = ([item, result, val]) => {
