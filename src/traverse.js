@@ -131,6 +131,7 @@ const addToContext = assign,
     if (isObject(nextValue)) {
       resContext = addPathToContext(resContext, next)
       if (nextValue.hasOwnProperty(next)) { // eslint-disable-line
+        // eslint-disable-line
         return _traverse(rest, nextValue[next], mapFunc, resContext, next)
       }
       unrechable = true
