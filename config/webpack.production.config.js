@@ -1,4 +1,4 @@
-/* eslint-disable import/no-extraneous-dependencies  */
+/* eslint-disable import/no-extraneous-dependencies */
 const config = require('./webpack.config'),
   webpack = require('webpack'),
   BundleAnalyzer = require('webpack-bundle-analyzer').BundleAnalyzerPlugin,

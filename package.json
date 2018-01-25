@@ -56,7 +56,8 @@
     "coverageDirectory": "./coverage",
     "coveragePathIgnorePatterns": [
       "/node_modules/",
-      "/lib/"
+      "/lib/",
+      "/test/"
     ]
   }
 }
