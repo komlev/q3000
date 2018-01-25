@@ -1,6 +1,6 @@
 {
   "name": "q3000",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Get/set library",
   "main": "lib/q3000.js",
   "module": "src/index.js",
