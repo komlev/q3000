@@ -36,7 +36,7 @@ const addToContext = assign,
   getContextKey = (key, index) => (key && index === 0 ? key : `${key}${index}`),
   nextKeyTransform = a => a + 1,
   getNextContextKey = (context, key) => {
-    const indexes = context.indexes,
+    const { indexes } = context,
       nextIndex = until(
         (val) => {
           const index = getContextKey(key, val)
